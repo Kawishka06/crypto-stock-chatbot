@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8000"; // change to deployed backend later
+const API_BASE = "https://crypto-stock-chatbot.onrender.com"; // change to deployed backend later
 
 const chat = document.getElementById("chat");
 const msg = document.getElementById("msg");
