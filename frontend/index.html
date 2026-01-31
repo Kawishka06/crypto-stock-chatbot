@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Market Chatbot</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>📊 Sock Market and Crypto Chatbot</h1>
+
+    <div class="row">
+      <select id="asset">
+        <option>SL20_SYN</option>
+        <option selected>BTC-USD</option>
+        <option>ETH-USD</option>
+      </select>
+      <input id="horizon" type="number" min="1" max="14" value="7" />
+    </div>
+
+    <div id="chat" class="chat"></div>
+
+    <div class="composer">
+      <input id="msg" placeholder="Ask about BTC trend, RSI, forecast..." />
+      <button id="send">Send</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+body { font-family: system-ui; margin: 0; background: #0b1220; color: #e6edf3; }
+.wrap { max-width: 900px; margin: 24px auto; padding: 16px; }
+.chat { height: 520px; overflow: auto; border: 1px solid #1f2a44; padding: 12px; border-radius: 12px; background:#0e1730; }
+.bubble { padding: 10px 12px; margin: 8px 0; border-radius: 12px; max-width: 80%; }
+.bubble.user { margin-left: auto; background:#2563eb; }
+.bubble.bot { margin-right: auto; background:#111c3a; border: 1px solid #1f2a44; }
+.composer { display:flex; gap: 8px; margin-top: 12px; }
+.composer input { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid #1f2a44; background:#0e1730; color:#e6edf3; }
+.composer button { padding: 10px 14px; border-radius: 10px; border: 0; background:#22c55e; cursor:pointer; }
+.row { display:flex; gap: 8px; margin-bottom: 10px; }
+select,input[type=number]{ padding:8px; border-radius:10px; border:1px solid #1f2a44; background:#0e1730; color:#e6edf3; }
