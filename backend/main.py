@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
+from backend.llm import generate_reply
 
 from backend.schemas import ChatRequest, ChatResponse
 from backend.tools.market_data import get_history
@@ -47,20 +48,20 @@ def chat(req:ChatRequest):
         trend = "bullish" if sma_50 and sma_14 > sma_50 else "neutral/bearish"
         next7 = preds[-1]["yhat"] if preds else None
 
-        reply = (
-            f"**{asset} summary**\n\n"
-            f"- Last close: **{last_value:,.2f}** (as of {last_date})\n"
-            f"- RSI(14): **{rsi_14:,.2f}**\n"
-            f"- SMA(14): **{sma_14:,.2f}**\n"
-        )
-        if sma_50 is not None:
-            reply += f"- SMA(50): **{sma_50:,.2f}** → Trend: **{trend}**\n"
+        context = {
+            "asset": asset,
+            "horizon": horizon,
+            "last_value": last_value,
+            "last_date": last_date,
+            "rsi_14": rsi_14,
+            "sma_14": sma_14,
+            "sma_50": sma_50,
+            "trend": trend,
+            "next_end": next7,
+        }
 
-        if next7 is not None:
-            reply += f"\n**Forecast (next {horizon} days):** expected level near **{float(next7):,.2f}** by the end of horizon.\n"
-
-        reply += "\nIf you want, tell me: *risk level (low/medium/high)* and I can explain a simple strategy using the indicators."
-
+        reply = generate_reply(user_msg, context)
+        
         return ChatResponse(
             reply=reply,
             tool_calls=[
