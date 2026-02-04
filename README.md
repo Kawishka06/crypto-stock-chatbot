@@ -1,6 +1,3 @@
-# 🤖  Chatbot
-
-
 # 🤖 AI-Powered Market Chatbot
 
 A **tool-augmented conversational AI** that provides interpretable stock and crypto market insights by combining machine learning forecasts, technical indicators, and natural language interaction.
